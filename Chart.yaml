@@ -26,23 +26,3 @@ dependencies:
   - name: prometheus
     version: 22.7.0
     repository: https://prometheus-community.github.io/helm-charts
-
-prometheus:
-  alertmanager:
-    enabled: false
-  prometheus-pushgateway:
-    enabled: false
-  configmapReload:
-    prometheus:
-      enabled: false
-  server:
-    nodeSelector:
-      kubernetes.io/hostname: {master node}
-    securityContext:
-      runAsUser: {userid}
-      runAsNonRoot: true
-      runAsGroup: {groupid}
-      fsGroup: {fsid}
-    persistentVolume:
-      enabled: true
-      existingClaim: "prometheus-usb-pvc"
