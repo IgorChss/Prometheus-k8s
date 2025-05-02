@@ -118,11 +118,6 @@ volumeMounts: []
 
 nodeSelector: {}
 
-tolerations:
-- key: "node-role.kubernetes.io/control-plane"
-  operator: "Equal"
-  value: ""
-  effect: "NoSchedule"
 
 affinity: {}
 prometheus:
@@ -145,3 +140,8 @@ prometheus:
       enabled: true
       existingClaim: "prometheus-usb-pvc"
       volumeName: "prometheus-usb-pv"
+server:
+  tolerations:
+    - key: "node-role.kubernetes.io/control-plane"
+      operator: "Exists"
+      effect: "NoSchedule"
