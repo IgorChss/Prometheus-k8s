@@ -130,7 +130,7 @@ prometheus:
       enabled: false
   server:
     nodeSelector:
-      kubernetes.io/hostname: node-0
+      kubernetes.io/hostname: worker-01
     securityContext:
       runAsUser: 1000
       runAsNonRoot: true
@@ -140,8 +140,3 @@ prometheus:
       enabled: true
       existingClaim: "prometheus-usb-pvc"
       volumeName: "prometheus-usb-pv"
-server:
-  tolerations:
-    - key: "node-role.kubernetes.io/control-plane"
-      operator: "Exists"
-      effect: "NoSchedule"
